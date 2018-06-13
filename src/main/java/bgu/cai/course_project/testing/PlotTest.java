@@ -1,4 +1,4 @@
-package bgu.cai.course_project;
+package bgu.cai.course_project.testing;
 
 import burlap.behavior.singleagent.auxiliary.performance.LearningAlgorithmExperimenter;
 import burlap.behavior.singleagent.auxiliary.performance.PerformanceMetric;

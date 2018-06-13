@@ -1,7 +1,7 @@
 /**
  * 
  */
-package bgu.cai.course_project;
+package bgu.cai.course_project.testing;
 
 import org.apache.log4j.Logger;
 
