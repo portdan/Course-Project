@@ -1,4 +1,4 @@
-package bgu.cai.course_project.TwoAgent.Visual;
+package bgu.cai.course_project.MA.TA;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -7,11 +7,11 @@ import java.awt.geom.Rectangle2D;
 import burlap.mdp.core.state.State;
 import burlap.visualizer.StatePainter;
 
-public class TwoAgentWallPainter implements StatePainter {
+public class WallPainter implements StatePainter {
 
 	protected int[][] map;
 
-	public TwoAgentWallPainter(int[][] map) {
+	public WallPainter(int[][] map) {
 		this.map = map.clone();
 	}
 
@@ -21,8 +21,8 @@ public class TwoAgentWallPainter implements StatePainter {
 		g2.setColor(Color.BLACK);
 
 		//set up floats for the width and height of our domain
-		float fWidth = map.length;
-		float fHeight = map[0].length;
+		float fWidth = this.map.length;
+		float fHeight = this.map[0].length;
 
 		//determine the width of a single cell
 		//on our canvas such that the whole map can be painted
@@ -31,11 +31,11 @@ public class TwoAgentWallPainter implements StatePainter {
 
 		//pass through each cell of our map and if it's a wall, paint a black rectangle on our
 		//cavas of dimension widthxheight
-		for(int i = 0; i < map.length; i++){
-			for(int j = 0; j < map[0].length; j++){
+		for(int i = 0; i < this.map.length; i++){
+			for(int j = 0; j < this.map[0].length; j++){
 
 				//is there a wall here?
-				if(map[i][j] == 1){
+				if(this.map[i][j] == 1){
 
 					//left coordinate of cell on our canvas
 					float rx = i*width;
@@ -49,7 +49,12 @@ public class TwoAgentWallPainter implements StatePainter {
 					g2.fill(new Rectangle2D.Float(rx, ry, width, height));
 
 				}
+
+
 			}
 		}
+
 	}
+
+
 }

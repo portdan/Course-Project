@@ -1,4 +1,4 @@
-package bgu.cai.course_project.TwoAgent.Visual;
+package bgu.cai.course_project.OOTwoAgent.Visual;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -7,11 +7,11 @@ import java.awt.geom.Rectangle2D;
 import burlap.mdp.core.state.State;
 import burlap.visualizer.StatePainter;
 
-public class TwoAgentWallPainter implements StatePainter {
+public class OOTwoAgentWallPainter implements StatePainter {
 
 	protected int[][] map;
 
-	public TwoAgentWallPainter(int[][] map) {
+	public OOTwoAgentWallPainter(int[][] map) {
 		this.map = map.clone();
 	}
 
