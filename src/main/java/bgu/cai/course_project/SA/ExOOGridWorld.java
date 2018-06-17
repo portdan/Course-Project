@@ -1,4 +1,4 @@
-package bgu.cai.course_project.MA.TA;
+package bgu.cai.course_project.SA;
 
 import burlap.mdp.auxiliary.DomainGenerator;
 import burlap.mdp.auxiliary.common.SinglePFTF;
@@ -70,7 +70,6 @@ public class ExOOGridWorld implements DomainGenerator{
 		{0,0,0,0,1,0,0,0,0,0,0},
 		{0,0,0,0,1,0,0,0,0,0,0},
 	};
-
 
 	//ordered so first dimension is x
 	protected int [][] map2 = new int[][]{
@@ -157,7 +156,7 @@ public class ExOOGridWorld implements DomainGenerator{
 
 	protected void setProbSucceedTransitionDynamics(double probSucceed){
 		int na = 4;
-		double pAlt = (1.-probSucceed)/(na-1);
+		double pAlt = (1.-probSucceed)/3.;
 		transitionDynamics = new double[na][na];
 		for(int i = 0; i < na; i++){
 			for(int j = 0; j < na; j++){
@@ -201,22 +200,9 @@ public class ExOOGridWorld implements DomainGenerator{
 
 		domain.addActionTypes(
 				new UniversalActionType(ACTION_NORTH_NORTH),
-				new UniversalActionType(ACTION_NORTH_SOUTH),
-				new UniversalActionType(ACTION_NORTH_EAST),
-				new UniversalActionType(ACTION_NORTH_WEST),
-				new UniversalActionType(ACTION_SOUTH_NORTH),
 				new UniversalActionType(ACTION_SOUTH_SOUTH),
-				new UniversalActionType(ACTION_SOUTH_EAST),
-				new UniversalActionType(ACTION_SOUTH_WEST),
-				new UniversalActionType(ACTION_EAST_NORTH),
-				new UniversalActionType(ACTION_EAST_SOUTH),
 				new UniversalActionType(ACTION_EAST_EAST),
-				new UniversalActionType(ACTION_EAST_WEST),
-				new UniversalActionType(ACTION_WEST_NORTH),
-				new UniversalActionType(ACTION_WEST_SOUTH),
-				new UniversalActionType(ACTION_WEST_EAST),
-				new UniversalActionType(ACTION_WEST_WEST)
-				);
+				new UniversalActionType(ACTION_WEST_WEST));
 
 
 		OODomain.Helper.addPfsToDomain(domain, this.generatePfs());

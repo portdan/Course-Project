@@ -25,34 +25,39 @@ class OOGridWorldStateModel implements FullStateModel {
 
 	public List<StateTransitionProb> stateTransitions(State s, Action a) {
 
-		double [] directionProbs = transitionDynamics[actionDirection(a.actionName())];
+		int [] actionDirections = actionDirection(a.actionName());
+
+		double [] direction1Probs = transitionDynamics[actionDirections[0]];
+		double [] direction2Probs = transitionDynamics[actionDirections[1]];
 
 		List <StateTransitionProb> transitions = new ArrayList<StateTransitionProb>();
 
-		for(int i = 0; i < directionProbs.length; i++){
+		for(int i = 0; i < direction1Probs.length; i++){
+			for(int j = 0; j < direction2Probs.length; j++){
 
-			double p = directionProbs[i];
+				double p = direction1Probs[i]*direction2Probs[j];
 
-			if(p == 0.)
-				continue; //cannot transition in this direction
+				if(p == 0.)
+					continue; //cannot transition in this direction
 
-			State ns = s.copy();
-			int [] dcomps = actionDirectionDeltaFromIndex(i);
-			ns = actionMoveResult(ns, dcomps);
+				State ns = s.copy();
+				int [] dcomps = actionDirectionDeltaFromIndex(i,j);
+				ns = actionMoveResult(ns, dcomps);
 
-			//make sure this direction doesn't actually stay in the same place and replicate another no-op
-			boolean isNew = true;
-			for(StateTransitionProb tp : transitions){
-				if(tp.s.equals(ns)){
-					isNew = false;
-					tp.p += p;
-					break;
+				//make sure this direction doesn't actually stay in the same place and replicate another no-op
+				boolean isNew = true;
+				for(StateTransitionProb tp : transitions){
+					if(tp.s.equals(ns)){
+						isNew = false;
+						tp.p += p;
+						break;
+					}
 				}
-			}
 
-			if(isNew){
-				StateTransitionProb tp = new StateTransitionProb(ns, p);
-				transitions.add(tp);
+				if(isNew){
+					StateTransitionProb tp = new StateTransitionProb(ns, p);
+					transitions.add(tp);
+				}
 			}
 		}
 
@@ -63,67 +68,84 @@ class OOGridWorldStateModel implements FullStateModel {
 
 		s = s.copy();
 
-		double [] directionProbs = transitionDynamics[actionDirection(a.actionName())];
+		int [] actionDirections = actionDirection(a.actionName());
 
-		double roll = rand.nextDouble();
+		double [] direction1Probs = transitionDynamics[actionDirections[0]];
+		double [] direction2Probs = transitionDynamics[actionDirections[1]];
+
+		double roll = 0;
 		double curSum = 0.;
-		int dir = 0;
+		int[] dir = new int[2];
 
-		for(int i = 0; i < directionProbs.length; i++){
-			curSum += directionProbs[i];
+		roll = rand.nextDouble();
+
+		for(int i = 0; i < direction1Probs.length; i++){
+			curSum += direction1Probs[i];
 			if(roll < curSum){
-				dir = i;
+				dir[0] = i;
 				break;
 			}
 		}
 
-		int [] dcomps = actionDirectionDeltaFromIndex(dir);
+		curSum = 0.;
+		roll = rand.nextDouble();
+
+		for(int i = 0; i < direction2Probs.length; i++){
+			curSum += direction2Probs[i];
+			if(roll < curSum){
+				dir[1] = i;
+				break;
+			}
+		}
+
+		int [] dcomps = actionDirectionDeltaFromIndex(dir[0],dir[1]);
 
 		return actionMoveResult(s, dcomps);
 	}
 
-	protected int actionDirection(String actionName){
+	protected int [] actionDirection(String actionName){
 
-		if(actionName.equals(ACTION_NORTH_NORTH)){
-			return 0;
-		}
-		else if(actionName.equals(ACTION_SOUTH_SOUTH)){
-			return 1;
-		}
-		else if(actionName.equals(ACTION_EAST_EAST)){
-			return 2;
-		}
-		else if(actionName.equals(ACTION_WEST_WEST)){
-			return 3;
-		}
+		if(actionName.equals(ACTION_NORTH_NORTH))		{return new int[]	{0,0};}
+		else if(actionName.equals(ACTION_NORTH_SOUTH))	{return new int[]	{0,1};}
+		else if(actionName.equals(ACTION_NORTH_EAST))	{return new int[]	{0,2};}
+		else if(actionName.equals(ACTION_NORTH_WEST))	{return new int[]	{0,3};}
+		else if(actionName.equals(ACTION_SOUTH_NORTH))	{return new int[]	{1,0};}
+		else if(actionName.equals(ACTION_SOUTH_SOUTH))	{return new int[]	{1,1};}
+		else if(actionName.equals(ACTION_SOUTH_EAST))	{return new int[]	{1,2};}
+		else if(actionName.equals(ACTION_SOUTH_WEST))	{return new int[]	{1,3};}
+		else if(actionName.equals(ACTION_EAST_NORTH))	{return new int[]	{2,0};}
+		else if(actionName.equals(ACTION_EAST_SOUTH))	{return new int[]	{2,1};}
+		else if(actionName.equals(ACTION_EAST_EAST))	{return new int[]	{2,2};}
+		else if(actionName.equals(ACTION_EAST_WEST))	{return new int[]	{2,3};}
+		else if(actionName.equals(ACTION_WEST_NORTH))	{return new int[]	{3,0};}
+		else if(actionName.equals(ACTION_WEST_SOUTH))	{return new int[]	{3,1};}
+		else if(actionName.equals(ACTION_WEST_EAST))	{return new int[]	{3,2};}
+		else if(actionName.equals(ACTION_WEST_WEST))	{return new int[]	{3,3};}
 
 		throw new RuntimeException("Unknown action " + actionName);
 	}
 
-	protected int [] actionDirectionDeltaFromIndex(int i){
+	protected int [] actionDirectionDeltaFromIndex(int i, int j){
 
-		int [] result = null;
+		int [] result = new int[4];
 
 		switch (i) {
-		case 0:
-			result = new int[]{0,1};
-			break;
-
-		case 1:
-			result = new int[]{0,-1};
-			break;
-
-		case 2:
-			result = new int[]{1,0};
-			break;
-
-		case 3:
-			result = new int[]{-1,0};
-			break;
-
+		case 0:	result[0] = 0;result[1] = 1;	break;
+		case 1:	result[0] = 0;result[1] = -1;	break;
+		case 2:	result[0] = 1;result[1] = 0;	break;
+		case 3:	result[0] = -1;result[1] = 0;	break;
 		default:
 			break;
 		}
+		switch (j) {
+		case 0:	result[2] = 0;result[3] = 1;	break;
+		case 1:	result[2] = 0;result[3] = -1;	break;
+		case 2:	result[2] = 1;result[3] = 0;	break;
+		case 3:	result[2] = -1;result[3] = 0;	break;
+		default:
+			break;
+		}
+
 
 		return result;
 	}
@@ -132,25 +154,54 @@ class OOGridWorldStateModel implements FullStateModel {
 
 		ExGridWorldState gws = (ExGridWorldState)s;
 
-		int ax = gws.agent.x1;
-		int ay = gws.agent.y1;
+		int ax1 = gws.agent.x1;
+		int ay1 = gws.agent.y1;
+		int ax2 = gws.agent.x2;
+		int ay2 = gws.agent.y2;
 
-		int nx = ax+direction[0];
-		int ny = ay+direction[1];
+		int nx1 = ax1 + direction[0];
+		int ny1 = ay1 + direction[1];
+		int nx2 = ax2 + direction[2];
+		int ny2 = ay2 + direction[3];
 
 		int width = this.map.length;
 		int height = this.map[0].length;
 
-		//make sure new position is valid (not a wall or off bounds)
-		if(nx < 0 || nx >= width || ny < 0 || ny >= height ||
-				map[nx][ny] == 1){
-			nx = ax;
-			ny = ay;
+		//make sure agent 1 new position is valid (not a wall or off bounds)
+		if(nx1 < 0 || nx1 >= width || ny1 < 0 || ny1 >= height ||
+				map[nx1][ny1] == 1){
+			nx1 = ax1;
+			ny1 = ay1;
+		}
+
+		//make sure agent 2 new position is valid (not a wall or off bounds)
+		if(nx2 < 0 || nx2 >= width || ny2 < 0 || ny2 >= height ||
+				map[nx2][ny2] == 1){
+			nx2 = ax2;
+			ny2 = ay2;
+		}
+
+		//make sure no collision between agents
+		if(nx1 == nx2 && ny1 == ny2) {
+			nx1 = ax1;
+			ny1 = ay1;
+			nx2 = ax2;
+			ny2 = ay2;
+		}
+
+		//make sure no swapping between agents
+		if(nx1 == ax2 && ny1 == ay2 && nx2 == ax1 && ny2 == ay1) {
+			nx1 = ax1;
+			ny1 = ay1;
+			nx2 = ax2;
+			ny2 = ay2;
 		}
 
 		ExGridAgent nagent = gws.touchAgent();
-		nagent.x1 = nx;
-		nagent.y1 = ny;
+		nagent.x1 = nx1;
+		nagent.y1 = ny1;
+		nagent.x2 = nx2;
+		nagent.y2 = ny2;
 
 		return s;
 	}

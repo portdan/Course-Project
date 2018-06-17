@@ -1,6 +1,6 @@
-package bgu.cai.course_project.MA.TA;
+package bgu.cai.course_project.SA;
 
-import static bgu.cai.course_project.MA.TA.ExOOGridWorld.*;
+import static bgu.cai.course_project.SA.ExOOGridWorld.*;
 
 import burlap.behavior.policy.Policy;
 import burlap.behavior.policy.PolicyUtils;
@@ -26,7 +26,7 @@ import burlap.statehashing.HashableStateFactory;
 import burlap.statehashing.simple.SimpleHashableStateFactory;
 import burlap.visualizer.Visualizer;
 
-public class TARunner {
+public class SARunner {
 
 	ExOOGridWorld gwdg;
 	OOSADomain domain;
@@ -40,7 +40,7 @@ public class TARunner {
 	Visualizer v;
 	VisualExplorer exp;
 
-	public TARunner(int mapNum) {
+	public SARunner(int mapNum) {
 
 		gwdg = new ExOOGridWorld(mapNum);
 
@@ -49,7 +49,7 @@ public class TARunner {
 		if(mapNum == 1)			// map1
 			initialState = new ExGridWorldState(new ExGridAgent(0, 0, 10, 0), new ExGridLocation(10, 10, 0, 10, "loc0"));
 		else if (mapNum == 2)	//map2
-			initialState = new ExGridWorldState(new ExGridAgent(0, 0, 14, 0), new ExGridLocation(14, 14, 0, 14, "loc0"));
+			initialState = new ExGridWorldState(new ExGridAgent(0, 0, 10, 0), new ExGridLocation(14, 14, 0, 10, "loc0"));
 
 		hashingFactory = new SimpleHashableStateFactory();
 
@@ -178,7 +178,7 @@ public class TARunner {
 
 	}	
 
-	public void SarsaLearningExample(String outputPath) {
+	public void SarsaLearningExample(String outputPath){
 
 		gwdg.setProbSucceedTransitionFactoredModel(0.8);
 

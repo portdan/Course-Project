@@ -1,4 +1,6 @@
-package bgu.cai.course_project.MA.TA;
+package bgu.cai.course_project.SA;
+
+import bgu.cai.course_project.SA.SARunner;
 
 /**
  * @author James MacGlashan.
@@ -10,15 +12,16 @@ public class ExOOGridWorldMain {
 
 		int MapNum = 2;
 
-		TARunner example = new TARunner(MapNum);
+		SARunner example = new SARunner(MapNum);
 
-		String outputPath = "./results/TA/Map"+MapNum+"/"; //directory to record results
+		String outputPath = "./results/SA/Map"+MapNum+"/"; //directory to record results
 
-		String DeterministicOutputPath = outputPath + "Deterministic/";	//directory to record results
+		String DeterministicOutputPath = outputPath + "Deterministic/"; //directory to record results
 		String StochasticOutputPath = outputPath + "Stochastic/"; //directory to record results
 		String StochasticOutputPathVI = StochasticOutputPath + "VI/"; //directory to record results
 		String StochasticOutputPathQ = StochasticOutputPath + "QLearning/"; //directory to record results
 		String StochasticOutputPathSarsa = StochasticOutputPath + "Sarsa/"; //directory to record results
+
 
 		long startTime = System.nanoTime(); 
 		System.out.println("Start Time : " + startTime);
