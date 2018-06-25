@@ -10,7 +10,7 @@ public class ExOOGridWorldMain {
 
 	public static void main(String [] args){
 
-		int MapNum = 2;
+		int MapNum = 1;
 
 		SARunner example = new SARunner(MapNum);
 
@@ -21,10 +21,8 @@ public class ExOOGridWorldMain {
 		String StochasticOutputPathVI = StochasticOutputPath + "VI/"; //directory to record results
 		String StochasticOutputPathQ = StochasticOutputPath + "QLearning/"; //directory to record results
 		String StochasticOutputPathSarsa = StochasticOutputPath + "Sarsa/"; //directory to record results
-
-
-		long startTime = System.nanoTime(); 
-		System.out.println("Start Time : " + startTime);
+		String StochasticOutputPathUCT = StochasticOutputPath + "UCT/"; //directory to record results
+		String StochasticOutputPathRTDP = StochasticOutputPath + "RTDP/"; //directory to record results
 
 		//example.BFSExample(DeterministicOutputPath);
 		//example.visualizeActionObserver(DeterministicOutputPath);
@@ -44,11 +42,13 @@ public class ExOOGridWorldMain {
 		//example.SarsaLearningExample(StochasticOutputPathSarsa);
 		//example.visualizeActionObserver(StochasticOutputPathSarsa);
 
-		//example.visualizeExplorer(false);
+		example.RunPolicy(example.GetUCTPolicy(), 1, StochasticOutputPathUCT,"uct");
+		//example.visualizeActionObserver(StochasticOutputPathUCT);
 
-		long estimatedTime = System.nanoTime() - startTime;
-		System.out.println("Done Time : " + estimatedTime);
+		//example.RunPolicy(example.GetRTDPTPolicy(), 100, StochasticOutputPathRTDP,"rtdp");
+		//example.visualizeActionObserver(StochasticOutputPathRTDP);
+
+		//example.visualizeExplorer(true);
+
 	}
-
-
 }

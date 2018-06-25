@@ -2,6 +2,8 @@ package bgu.cai.course_project.SA;
 
 import static bgu.cai.course_project.SA.ExOOGridWorld.*;
 
+import burlap.behavior.learningrate.ConstantLR;
+import burlap.behavior.policy.EpsilonGreedy;
 import burlap.behavior.policy.Policy;
 import burlap.behavior.policy.PolicyUtils;
 import burlap.behavior.singleagent.Episode;
@@ -14,7 +16,10 @@ import burlap.behavior.singleagent.planning.deterministic.informed.Heuristic;
 import burlap.behavior.singleagent.planning.deterministic.informed.astar.AStar;
 import burlap.behavior.singleagent.planning.deterministic.uninformed.bfs.BFS;
 import burlap.behavior.singleagent.planning.deterministic.uninformed.dfs.DFS;
+import burlap.behavior.singleagent.planning.stochastic.montecarlo.uct.UCT;
+import burlap.behavior.singleagent.planning.stochastic.rtdp.RTDP;
 import burlap.behavior.singleagent.planning.stochastic.valueiteration.ValueIteration;
+import burlap.debugtools.DPrint;
 import burlap.mdp.auxiliary.stateconditiontest.StateConditionTest;
 import burlap.mdp.auxiliary.stateconditiontest.TFGoalCondition;
 import burlap.mdp.core.state.State;
@@ -47,9 +52,9 @@ public class SARunner {
 		domain = gwdg.generateDomain();
 
 		if(mapNum == 1)			// map1
-			initialState = new ExGridWorldState(new ExGridAgent(0, 0, 10, 0), new ExGridLocation(10, 10, 0, 10, "loc0"));
+			initialState = new ExGridWorldState(new ExGridAgent(0, 0), new ExGridLocation(10, 10, "loc0"));
 		else if (mapNum == 2)	//map2
-			initialState = new ExGridWorldState(new ExGridAgent(0, 0, 10, 0), new ExGridLocation(14, 14, 0, 10, "loc0"));
+			initialState = new ExGridWorldState(new ExGridAgent(0, 0), new ExGridLocation(14, 14, "loc0"));
 
 		hashingFactory = new SimpleHashableStateFactory();
 
@@ -81,10 +86,10 @@ public class SARunner {
 
 		VisualExplorer exp = new VisualExplorer(domain, env, v);
 
-		exp.addKeyAction("w", ACTION_NORTH_NORTH, "");
-		exp.addKeyAction("s", ACTION_SOUTH_SOUTH, "");
-		exp.addKeyAction("d", ACTION_EAST_EAST, "");
-		exp.addKeyAction("a", ACTION_WEST_WEST, "");
+		exp.addKeyAction("w", ACTION_NORTH, "");
+		exp.addKeyAction("s", ACTION_SOUTH, "");
+		exp.addKeyAction("d", ACTION_EAST, "");
+		exp.addKeyAction("a", ACTION_WEST, "");
 
 		exp.initGUI();
 	}	
@@ -118,7 +123,7 @@ public class SARunner {
 
 			public double h(State s) {
 				ExGridAgent a = ((ExGridWorldState)s).agent;
-				double mdist = Math.abs(a.x1-10) + Math.abs(a.y1-10);
+				double mdist = Math.abs(a.x-10) + Math.abs(a.y-10);
 
 				return -mdist;
 			}
@@ -136,9 +141,15 @@ public class SARunner {
 		gwdg.setProbSucceedTransitionFactoredModel(0.8);
 
 		Planner planner = new ValueIteration(domain, 0.99, hashingFactory, 0.001, 100);
+		//Planner planner = new ValueIteration(domain, 0.99, hashingFactory, 0.000000001, 100);
+
 		Policy p = planner.planFromState(initialState);
 
-		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "vi");
+		Episode fin = PolicyUtils.rollout(p, initialState, domain.getModel());
+
+		System.out.println("Num Time Steps: " + fin.numTimeSteps());
+
+		fin.write(outputPath + "vi");
 	}
 
 	public void QLearningExample(String outputPath){
@@ -147,11 +158,14 @@ public class SARunner {
 
 		QLearning agent = new QLearning(domain, 0.99, hashingFactory, 0., 1.);
 
+		agent.setLearningPolicy(new EpsilonGreedy(agent,0.1));
+		agent.setLearningRateFunction(new ConstantLR(0.5));
+
 		int minInd = 0;
 		int min = Integer.MAX_VALUE;
 		Episode minE = null;
 
-		//run learning for 100000 episodes
+		//run learning for 1000-100000 episodes
 		for(int i = 0; i < 100000; i++){
 
 			Episode e = agent.runLearningEpisode(env);
@@ -165,16 +179,21 @@ public class SARunner {
 				minInd = i;
 			}
 
-			System.out.println(i);
+			//System.out.println(i);
 
 			//reset environment for next learning episode
 			env.resetEnvironment();
 		}
 
-		minE.write(outputPath + "ql_min"+minInd);
+		//minE.write(outputPath + "ql_min"+minInd);
 
 		Policy p = agent.planFromState(initialState);
-		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "Final");
+
+		Episode fin = PolicyUtils.rollout(p, initialState, domain.getModel());
+
+		System.out.println("Num Time Steps: " + fin.numTimeSteps());
+
+		fin.write(outputPath + "Final");
 
 	}	
 
@@ -183,6 +202,10 @@ public class SARunner {
 		gwdg.setProbSucceedTransitionFactoredModel(0.8);
 
 		SarsaLam agent = new SarsaLam(domain, 0.99, hashingFactory, 0., 0.5, 0.3);
+
+		agent.setLearningPolicy(new EpsilonGreedy(agent,0.1));
+		agent.setLearningRateFunction(new ConstantLR(0.5));
+
 
 		int minInd = 0;
 		int min = Integer.MAX_VALUE;
@@ -208,9 +231,81 @@ public class SARunner {
 			env.resetEnvironment();
 		}
 
-		minE.write(outputPath + "sarsa_min"+minInd);
+		//minE.write(outputPath + "sarsa_min"+minInd);
 
 		Policy p = agent.planFromState(initialState);
-		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "Final");
+
+		Episode fin = PolicyUtils.rollout(p, initialState, domain.getModel());
+
+		System.out.println("Num Time Steps: " + fin.numTimeSteps());
+
+		fin.write(outputPath + "Final");	
+	}
+
+	public Policy GetUCTPolicy() {
+
+		gwdg.setProbSucceedTransitionFactoredModel(0.8);
+
+		DPrint.toggleUniversal(false);
+
+		long startTime = System.nanoTime(); 
+
+		Planner planner = new UCT(domain, 0.99, hashingFactory, 1000, 50000, 3);
+		Policy p = planner.planFromState(initialState);
+
+		long estimatedTime = System.nanoTime() - startTime;
+
+		System.out.println("Done Time : " + estimatedTime);
+
+		return p;
+	}
+
+	public Policy GetRTDPTPolicy() {
+
+		gwdg.setProbSucceedTransitionFactoredModel(0.8);
+
+		DPrint.toggleUniversal(false);
+
+		long startTime = System.nanoTime(); 
+
+		Planner planner = new RTDP(domain, 0.99, hashingFactory, 0., 1000, 0.001, 1000);
+		Policy p = planner.planFromState(initialState);
+
+		long estimatedTime = System.nanoTime() - startTime;
+
+		System.out.println("Done Time : " + estimatedTime);
+
+		return p;
+	}
+
+	public void RunPolicy(Policy p , int numOfIterations, String outputPath, String Ename) {
+
+		int sumNumOfSteps = 0;
+
+		int minInd = 0;
+		int min = Integer.MAX_VALUE;
+		Episode minE = null;
+
+		//run policy for 1000 iterations
+		for(int i = 0; i < numOfIterations; i++){
+
+			System.out.println("Start rollout - " + (i+1));
+
+			Episode e = PolicyUtils.rollout(p, initialState, domain.getModel());
+
+			sumNumOfSteps += e.numTimeSteps(); 
+
+			if( min > e.numTimeSteps()) {
+				min = e.numTimeSteps();	
+				minE = e.copy();
+				minInd = i;
+			}
+			
+			System.out.println("End rollout - " + (i+1));
+		}
+
+		System.out.println("Avg Num Time Steps: " + sumNumOfSteps/numOfIterations);
+
+		minE.write(outputPath + Ename);
 	}
 }

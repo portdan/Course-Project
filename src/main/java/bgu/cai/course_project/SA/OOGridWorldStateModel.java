@@ -84,16 +84,16 @@ class OOGridWorldStateModel implements FullStateModel {
 
 	protected int actionDirection(String actionName){
 
-		if(actionName.equals(ACTION_NORTH_NORTH)){
+		if(actionName.equals(ACTION_NORTH)){
 			return 0;
 		}
-		else if(actionName.equals(ACTION_SOUTH_SOUTH)){
+		else if(actionName.equals(ACTION_SOUTH)){
 			return 1;
 		}
-		else if(actionName.equals(ACTION_EAST_EAST)){
+		else if(actionName.equals(ACTION_EAST)){
 			return 2;
 		}
-		else if(actionName.equals(ACTION_WEST_WEST)){
+		else if(actionName.equals(ACTION_WEST)){
 			return 3;
 		}
 
@@ -132,8 +132,8 @@ class OOGridWorldStateModel implements FullStateModel {
 
 		ExGridWorldState gws = (ExGridWorldState)s;
 
-		int ax = gws.agent.x1;
-		int ay = gws.agent.y1;
+		int ax = gws.agent.x;
+		int ay = gws.agent.y;
 
 		int nx = ax+direction[0];
 		int ny = ay+direction[1];
@@ -149,8 +149,8 @@ class OOGridWorldStateModel implements FullStateModel {
 		}
 
 		ExGridAgent nagent = gws.touchAgent();
-		nagent.x1 = nx;
-		nagent.y1 = ny;
+		nagent.x = nx;
+		nagent.y = ny;
 
 		return s;
 	}

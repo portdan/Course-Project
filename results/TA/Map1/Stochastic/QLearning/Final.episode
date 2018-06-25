@@ -1,0 +1,960 @@
+!!burlap.behavior.singleagent.Episode
+actionSequence:
+- &id004 !!burlap.mdp.core.action.SimpleAction {name: ns}
+- &id011 !!burlap.mdp.core.action.SimpleAction {name: nw}
+- &id002 !!burlap.mdp.core.action.SimpleAction {name: ew}
+- &id001 !!burlap.mdp.core.action.SimpleAction {name: nn}
+- &id005 !!burlap.mdp.core.action.SimpleAction {name: ww}
+- &id003 !!burlap.mdp.core.action.SimpleAction {name: se}
+- &id016 !!burlap.mdp.core.action.SimpleAction {name: sw}
+- &id010 !!burlap.mdp.core.action.SimpleAction {name: ss}
+- *id001
+- *id002
+- *id003
+- &id009 !!burlap.mdp.core.action.SimpleAction {name: wn}
+- &id006 !!burlap.mdp.core.action.SimpleAction {name: ne}
+- *id001
+- &id015 !!burlap.mdp.core.action.SimpleAction {name: sn}
+- *id001
+- *id003
+- *id004
+- *id005
+- *id001
+- *id003
+- *id004
+- &id007 !!burlap.mdp.core.action.SimpleAction {name: ee}
+- *id005
+- *id001
+- *id003
+- *id004
+- *id005
+- *id006
+- *id007
+- &id008 !!burlap.mdp.core.action.SimpleAction {name: ws}
+- *id007
+- *id005
+- *id005
+- *id006
+- &id013 !!burlap.mdp.core.action.SimpleAction {name: we}
+- *id008
+- &id012 !!burlap.mdp.core.action.SimpleAction {name: en}
+- *id009
+- *id005
+- *id005
+- *id010
+- *id006
+- *id007
+- *id011
+- *id002
+- &id014 !!burlap.mdp.core.action.SimpleAction {name: es}
+- *id007
+- *id001
+- *id010
+- *id010
+- *id007
+- *id011
+- *id011
+- *id008
+- *id001
+- *id012
+- *id011
+- *id001
+- *id013
+- *id013
+- *id003
+- *id014
+- *id003
+- *id003
+- *id006
+- *id003
+- *id006
+- *id015
+- *id015
+- *id015
+- *id015
+- *id015
+- *id015
+- *id015
+- *id015
+- *id003
+- *id006
+- *id003
+- *id012
+- *id006
+- *id003
+- *id015
+- *id006
+- *id008
+- *id007
+- *id002
+- *id008
+- *id004
+- *id006
+- *id010
+- *id015
+- *id008
+- *id015
+- *id009
+- *id008
+- *id009
+- *id014
+- *id009
+- *id011
+- *id009
+- *id012
+- *id004
+- *id011
+- *id013
+- *id016
+- *id013
+- *id012
+- *id012
+- *id003
+- *id005
+- *id013
+- *id014
+- *id001
+- *id003
+- *id007
+- *id006
+- *id006
+- *id005
+- *id002
+- *id002
+- *id007
+- *id016
+- *id003
+- *id005
+- *id008
+- *id016
+- *id009
+- *id005
+- *id012
+- *id005
+- *id008
+- *id007
+- *id011
+- *id012
+- *id015
+- *id007
+- *id011
+- *id001
+- *id003
+- *id010
+- *id001
+- *id015
+- *id001
+- *id006
+- *id001
+- *id012
+- *id015
+- *id009
+- *id008
+- *id003
+- *id009
+- *id006
+- *id001
+- *id013
+- *id004
+- *id002
+- *id016
+- *id004
+- *id011
+- *id003
+- *id010
+- *id004
+- *id007
+- *id016
+- *id001
+- *id004
+- *id002
+- *id014
+- *id007
+- *id008
+- *id004
+- *id012
+- *id005
+- *id006
+- *id005
+- *id012
+- *id004
+- *id011
+- *id004
+- *id014
+- *id005
+- *id012
+- *id009
+- *id003
+- *id004
+- *id011
+- *id003
+- *id004
+- *id014
+- *id002
+- *id010
+- *id002
+- *id014
+- *id005
+- *id013
+- *id012
+- *id016
+- *id016
+- *id003
+- *id005
+- *id012
+- *id015
+- *id010
+- *id002
+- *id016
+- *id011
+- *id015
+- *id015
+- *id011
+- *id001
+- *id015
+- *id001
+- *id006
+- *id002
+- *id006
+- *id001
+- *id012
+- *id010
+- *id002
+- *id012
+- *id009
+- *id007
+- *id007
+- *id016
+- *id002
+- *id015
+- *id002
+- *id001
+- *id011
+- *id011
+- *id011
+- *id001
+- *id001
+rewardSequence: [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 100.0]
+stateSequence:
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 0, y2: 0}
+  locations: &id017
+  - {name: loc0, type: 0, x1: 10, x2: 0, y1: 10, y2: 10}
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 1, y2: 0}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 1, y2: 0}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 8, y1: 1, y2: 0}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 8, y1: 2, y2: 1}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 7, y1: 2, y2: 1}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 1, y2: 1}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 0, y2: 2}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 0, y2: 3}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 1, y2: 4}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 8, y1: 1, y2: 4}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 8, y1: 0, y2: 4}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 0, y2: 5}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 1, y2: 5}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 2, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 1, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 2, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 1, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 1, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 1, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 2, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 1, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 10, y1: 1, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 1, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 1, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 2, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 1, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 2, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 2, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 10, y1: 3, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 2, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 2, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 2, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 9, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 3, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 3, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 2, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 10, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 10, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 9, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 8, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 8, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 8, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 9, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 9, y1: 3, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 8, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 7, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 7, y1: 4, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 7, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 7, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 8, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 8, y1: 4, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 9, y1: 4, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 10, y1: 3, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 10, y1: 2, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 2, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 1, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 1, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 1, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 1, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 0, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 10, y1: 1, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 9, y1: 0, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 10, y1: 1, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 10, y1: 1, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 10, y1: 1, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 9, y1: 1, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 9, y1: 1, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 9, y1: 2, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 10, y1: 3, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 10, y1: 2, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 10, y1: 1, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 10, y1: 1, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 10, y1: 0, y2: 5}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 10, y1: 0, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 10, y1: 0, y2: 5}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 10, y1: 0, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 10, y1: 0, y2: 5}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 10, y1: 0, y2: 5}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 9, y1: 1, y2: 5}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 9, y1: 1, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 8, y1: 2, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 8, y1: 3, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 8, y1: 3, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 9, y1: 4, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 8, y1: 3, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 9, y1: 3, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 8, y1: 3, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 8, y1: 4, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 9, y1: 3, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 3, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 9, y1: 4, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 9, y1: 4, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 9, y1: 5, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 10, y1: 4, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 10, y1: 4, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 10, y1: 4, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 10, y1: 4, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 9, y1: 4, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 8, y1: 4, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 7, y1: 4, y2: 6}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 7, y1: 4, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 6, y1: 4, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 7, y1: 3, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 7, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 7, y1: 4, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 6, y1: 3, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 6, y1: 3, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 6, y1: 3, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 6, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 5, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 5, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 6, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 5, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 6, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 4, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 5, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 4, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 5, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 6, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 6, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 7, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 7, y1: 4, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 4, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 7, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 6, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 6, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 7, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 0, x2: 8, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 7, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 8, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 9, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 9, y1: 3, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 9, y1: 3, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 9, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 8, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 8, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 7, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 7, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 7, y1: 4, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 6, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 7, y1: 3, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 7, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 6, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 6, y1: 3, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 6, y1: 2, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 6, y1: 3, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 6, y1: 4, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 6, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 6, y1: 4, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 6, y1: 4, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 6, y1: 3, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 6, y1: 3, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 7, y1: 4, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 7, y1: 5, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 8, y1: 6, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 1, x2: 7, y1: 7, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 2, x2: 7, y1: 7, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 6, y1: 7, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 6, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 6, y1: 6, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 6, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 6, y1: 7, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 7, y1: 7, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 7, y1: 7, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 6, y1: 8, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 5, y1: 7, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 6, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 7, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 7, y1: 6, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 6, y1: 6, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 3, x2: 6, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 5, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 4, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 4, y1: 6, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 4, y1: 6, y2: 7}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 4, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 3, y1: 7, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 2, y1: 8, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 3, y1: 7, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 2, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 3, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 2, y1: 6, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 3, y1: 7, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 4, x2: 3, y1: 8, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 5, x2: 3, y1: 8, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 5, x2: 3, y1: 8, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 6, x2: 2, y1: 8, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 6, x2: 2, y1: 9, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 6, x2: 2, y1: 9, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 6, x2: 3, y1: 9, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 7, x2: 4, y1: 9, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 7, x2: 4, y1: 8, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 8, x2: 3, y1: 8, y2: 8}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 8, x2: 3, y1: 7, y2: 9}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 9, x2: 3, y1: 7, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 9, x2: 3, y1: 8, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 9, x2: 2, y1: 9, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 10, x2: 1, y1: 9, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 10, x2: 0, y1: 8, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 10, x2: 0, y1: 9, y2: 10}
+  locations: *id017
+- !!bgu.cai.course_project.MA.TA.ExGridWorldState
+  agent: {name: agent, x1: 10, x2: 0, y1: 10, y2: 10}
+  locations: *id017

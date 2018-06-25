@@ -27,32 +27,19 @@ public class ExOOGridWorld implements DomainGenerator{
 		this.mapNum=mapNum;
 	}
 
-	public static final String VAR_X1 = "x1";
-	public static final String VAR_Y1 = "y1";
-	public static final String VAR_X2 = "x2";
-	public static final String VAR_Y2 = "y2";
+	public static final String VAR_X = "x";
+	public static final String VAR_Y = "y";
 
 	public static final String VAR_TYPE = "type";
 
 	public static final String CLASS_AGENT = "agent";
 	public static final String CLASS_LOCATION = "location";
 
-	public static final String ACTION_NORTH_NORTH = "nn";
-	public static final String ACTION_SOUTH_NORTH = "sn";
-	public static final String ACTION_EAST_NORTH = "en";
-	public static final String ACTION_WEST_NORTH = "wn";
-	public static final String ACTION_NORTH_SOUTH = "ns";
-	public static final String ACTION_SOUTH_SOUTH = "ss";
-	public static final String ACTION_EAST_SOUTH = "es";
-	public static final String ACTION_WEST_SOUTH = "ws";
-	public static final String ACTION_NORTH_EAST = "ne";
-	public static final String ACTION_SOUTH_EAST = "se";
-	public static final String ACTION_EAST_EAST = "ee";
-	public static final String ACTION_WEST_EAST = "we";
-	public static final String ACTION_NORTH_WEST = "nw";
-	public static final String ACTION_SOUTH_WEST = "sw";
-	public static final String ACTION_EAST_WEST = "ew";
-	public static final String ACTION_WEST_WEST = "ww";
+	public static final String ACTION_NORTH = "n";
+	public static final String ACTION_SOUTH = "s";
+	public static final String ACTION_EAST = "e";
+	public static final String ACTION_WEST = "w";
+
 
 	public static final String PF_AT = "at";
 
@@ -199,10 +186,10 @@ public class ExOOGridWorld implements DomainGenerator{
 		.addStateClass(CLASS_LOCATION, ExGridLocation.class);
 
 		domain.addActionTypes(
-				new UniversalActionType(ACTION_NORTH_NORTH),
-				new UniversalActionType(ACTION_SOUTH_SOUTH),
-				new UniversalActionType(ACTION_EAST_EAST),
-				new UniversalActionType(ACTION_WEST_WEST));
+				new UniversalActionType(ACTION_NORTH),
+				new UniversalActionType(ACTION_SOUTH),
+				new UniversalActionType(ACTION_EAST),
+				new UniversalActionType(ACTION_WEST));
 
 
 		OODomain.Helper.addPfsToDomain(domain, this.generatePfs());

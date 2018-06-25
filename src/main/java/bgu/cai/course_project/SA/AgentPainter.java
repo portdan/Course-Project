@@ -34,8 +34,8 @@ public class AgentPainter implements ObjectPainter {
 		float width = cWidth / fWidth;
 		float height = cHeight / fHeight;
 
-		int ax = (Integer)ob.get(VAR_X1);
-		int ay = (Integer)ob.get(VAR_Y1);
+		int ax = (Integer)ob.get(VAR_X);
+		int ay = (Integer)ob.get(VAR_Y);
 
 		//left coordinate of cell on our canvas
 		float rx = ax*width;

@@ -17,13 +17,11 @@ import static bgu.cai.course_project.SA.ExOOGridWorld.*;
 @DeepCopyState
 public class ExGridAgent implements ObjectInstance {
 
-	public int x1;
-	public int y1;
-	public int x2;
-	public int y2;
+	public int x;
+	public int y;
 
 	public String name = "agent";
-	
+
 	public String getName() {
 		return name;
 	}
@@ -32,23 +30,19 @@ public class ExGridAgent implements ObjectInstance {
 		this.name = name;
 	}
 
-	private final static List<Object> keys = Arrays.<Object>asList(VAR_X1, VAR_Y1, VAR_X2, VAR_Y2);
+	private final static List<Object> keys = Arrays.<Object>asList(VAR_X, VAR_Y);
 
 	public ExGridAgent() {
 	}
 
-	public ExGridAgent(int x1, int y1,int x2, int y2) {
-		this.x1 = x1;
-		this.y1 = y1;
-		this.x2 = x2;
-		this.y2 = y2;
+	public ExGridAgent(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
-	public ExGridAgent(int x1, int y1,int x2, int y2, String name) {
-		this.x1 = x1;
-		this.y1 = y1;
-		this.x2 = x2;
-		this.y2 = y2;
+	public ExGridAgent(int x, int y, String name) {
+		this.x = x;
+		this.y = y;
 		this.name = name;
 	}
 
@@ -64,7 +58,7 @@ public class ExGridAgent implements ObjectInstance {
 
 	@Override
 	public ExGridAgent copyWithName(String objectName) {
-		
+
 		ExGridAgent nagent = this.copy();
 		nagent.name = objectName;
 		return nagent;
@@ -77,32 +71,26 @@ public class ExGridAgent implements ObjectInstance {
 
 	@Override
 	public Object get(Object variableKey) {
-		
+
 		if(!(variableKey instanceof String)){
 			throw new RuntimeException("ExGridAgent variable key must be a string");
 		}
-		
+
 		String key = (String)variableKey;
-		
-		if(key.equals(VAR_X1)){
-			return x1;
+
+		if(key.equals(VAR_X)){
+			return x;
 		}
-		else if(key.equals(VAR_Y1)){
-			return y1;
+		else if(key.equals(VAR_Y)){
+			return y;
 		}
-		else if(key.equals(VAR_X2)){
-			return x2;
-		}
-		else if(key.equals(VAR_Y2)){
-			return y2;
-		}
-		
+
 		throw new UnknownKeyException(variableKey);
 	}
 
 	@Override
 	public ExGridAgent copy() {
-		return new ExGridAgent(x1, y1, x2, y2, name);
+		return new ExGridAgent(x, y, name);
 	}
 
 	@Override

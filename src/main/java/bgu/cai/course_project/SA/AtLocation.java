@@ -17,11 +17,11 @@ class AtLocation extends PropositionalFunction {
 		ObjectInstance agent = s.object(params[0]);
 		ObjectInstance location = s.object(params[1]);
 
-		int ax = (Integer)agent.get(VAR_X1);
-		int ay = (Integer)agent.get(VAR_Y1);
+		int ax = (Integer)agent.get(VAR_X);
+		int ay = (Integer)agent.get(VAR_Y);
 
-		int lx = (Integer)location.get(VAR_X1);
-		int ly = (Integer)location.get(VAR_Y1);
+		int lx = (Integer)location.get(VAR_X);
+		int ly = (Integer)location.get(VAR_Y);
 
 		return ax == lx && ay == ly;
 

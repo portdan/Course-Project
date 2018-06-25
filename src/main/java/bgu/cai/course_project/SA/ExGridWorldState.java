@@ -50,8 +50,8 @@ public class ExGridWorldState implements MutableOOState {
 	public ExGridWorldState() {
 	}
 
-	public ExGridWorldState(int x1, int y1,int x2, int y2 , ExGridLocation...locations){
-		this(new ExGridAgent(x1, y1, x2, y2), locations);
+	public ExGridWorldState(int x, int y , ExGridLocation...locations){
+		this(new ExGridAgent(x, y), locations);
 	}
 
 	public ExGridWorldState(ExGridAgent agent, ExGridLocation...locations){
@@ -171,17 +171,11 @@ public class ExGridWorldState implements MutableOOState {
 
 		if(key.obName.equals(agent.name())){
 
-			if(key.obVarKey.equals(VAR_X1)){
-				touchAgent().x1 = iv;
+			if(key.obVarKey.equals(VAR_X)){
+				touchAgent().x = iv;
 			}
-			else if(key.obVarKey.equals(VAR_Y1)){
-				touchAgent().y1 = iv;
-			}
-			else if(key.obVarKey.equals(VAR_X2)){
-				touchAgent().x2 = iv;
-			}
-			else if(key.obVarKey.equals(VAR_Y2)){
-				touchAgent().y2 = iv;
+			else if(key.obVarKey.equals(VAR_Y)){
+				touchAgent().y = iv;
 			}
 			else{
 				throw new RuntimeException("Unknown variable key " + variableKey);
@@ -192,17 +186,11 @@ public class ExGridWorldState implements MutableOOState {
 		int ind = locationInd(key.obName);
 
 		if(ind != -1){
-			if(key.obVarKey.equals(VAR_X1)){
-				touchLocation(ind).x1 = iv;
+			if(key.obVarKey.equals(VAR_X)){
+				touchLocation(ind).x = iv;
 			}
-			else if(key.obVarKey.equals(VAR_Y1)){
-				touchLocation(ind).y1 = iv;
-			}
-			else if(key.obVarKey.equals(VAR_X2)){
-				touchLocation(ind).x2 = iv;
-			}
-			else if(key.obVarKey.equals(VAR_Y2)){
-				touchLocation(ind).y2 = iv;
+			else if(key.obVarKey.equals(VAR_Y)){
+				touchLocation(ind).y = iv;
 			}
 			else if(key.obVarKey.equals(VAR_TYPE)){
 				touchLocation(ind).type = iv;
