@@ -41,18 +41,27 @@ public class ExOOGridWorld implements DomainGenerator{
 	public static final String ACTION_SOUTH_NORTH = "sn";
 	public static final String ACTION_EAST_NORTH = "en";
 	public static final String ACTION_WEST_NORTH = "wn";
+	public static final String ACTION_WAIT_NORTH = "waitn";
 	public static final String ACTION_NORTH_SOUTH = "ns";
 	public static final String ACTION_SOUTH_SOUTH = "ss";
 	public static final String ACTION_EAST_SOUTH = "es";
 	public static final String ACTION_WEST_SOUTH = "ws";
+	public static final String ACTION_WAIT_SOUTH = "waits";
 	public static final String ACTION_NORTH_EAST = "ne";
 	public static final String ACTION_SOUTH_EAST = "se";
 	public static final String ACTION_EAST_EAST = "ee";
 	public static final String ACTION_WEST_EAST = "we";
+	public static final String ACTION_WAIT_EAST = "waite";
 	public static final String ACTION_NORTH_WEST = "nw";
 	public static final String ACTION_SOUTH_WEST = "sw";
 	public static final String ACTION_EAST_WEST = "ew";
 	public static final String ACTION_WEST_WEST = "ww";
+	public static final String ACTION_WAIT_WEST = "waitw";
+	public static final String ACTION_NORTH_WAIT = "nwait";
+	public static final String ACTION_SOUTH_WAIT = "swait";
+	public static final String ACTION_EAST_WAIT = "ewait";
+	public static final String ACTION_WEST_WAIT = "wwait";
+	public static final String ACTION_WAIT_WAIT = "waitwait";
 
 	public static final String PF_AT = "at";
 
@@ -201,22 +210,30 @@ public class ExOOGridWorld implements DomainGenerator{
 
 		domain.addActionTypes(
 				new UniversalActionType(ACTION_NORTH_NORTH),
-				new UniversalActionType(ACTION_NORTH_SOUTH),
-				new UniversalActionType(ACTION_NORTH_EAST),
-				new UniversalActionType(ACTION_NORTH_WEST),
 				new UniversalActionType(ACTION_SOUTH_NORTH),
-				new UniversalActionType(ACTION_SOUTH_SOUTH),
-				new UniversalActionType(ACTION_SOUTH_EAST),
-				new UniversalActionType(ACTION_SOUTH_WEST),
 				new UniversalActionType(ACTION_EAST_NORTH),
-				new UniversalActionType(ACTION_EAST_SOUTH),
-				new UniversalActionType(ACTION_EAST_EAST),
-				new UniversalActionType(ACTION_EAST_WEST),
 				new UniversalActionType(ACTION_WEST_NORTH),
+				new UniversalActionType(ACTION_WAIT_NORTH),
+				new UniversalActionType(ACTION_NORTH_SOUTH),
+				new UniversalActionType(ACTION_SOUTH_SOUTH),
+				new UniversalActionType(ACTION_EAST_SOUTH),
 				new UniversalActionType(ACTION_WEST_SOUTH),
+				new UniversalActionType(ACTION_WAIT_SOUTH),
+				new UniversalActionType(ACTION_NORTH_EAST),
+				new UniversalActionType(ACTION_SOUTH_EAST),
+				new UniversalActionType(ACTION_EAST_EAST),
 				new UniversalActionType(ACTION_WEST_EAST),
-				new UniversalActionType(ACTION_WEST_WEST)
-				);
+				new UniversalActionType(ACTION_WAIT_EAST),
+				new UniversalActionType(ACTION_NORTH_WEST),
+				new UniversalActionType(ACTION_SOUTH_WEST),
+				new UniversalActionType(ACTION_EAST_WEST),
+				new UniversalActionType(ACTION_WEST_WEST),
+				new UniversalActionType(ACTION_WAIT_WEST),
+				new UniversalActionType(ACTION_NORTH_WAIT),
+				new UniversalActionType(ACTION_SOUTH_WAIT),
+				new UniversalActionType(ACTION_EAST_WAIT),
+				new UniversalActionType(ACTION_WEST_WAIT),
+				new UniversalActionType(ACTION_WAIT_WAIT));
 
 
 		OODomain.Helper.addPfsToDomain(domain, this.generatePfs());

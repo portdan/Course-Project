@@ -35,10 +35,11 @@ public class ExOOGridWorld implements DomainGenerator{
 	public static final String CLASS_AGENT = "agent";
 	public static final String CLASS_LOCATION = "location";
 
-	public static final String ACTION_NORTH = "n";
-	public static final String ACTION_SOUTH = "s";
-	public static final String ACTION_EAST = "e";
-	public static final String ACTION_WEST = "w";
+	public static final String ACTION_NORTH = "north";
+	public static final String ACTION_SOUTH = "south";
+	public static final String ACTION_EAST = "east";
+	public static final String ACTION_WEST = "west";
+	public static final String ACTION_WAIT = "wait";
 
 
 	public static final String PF_AT = "at";
@@ -189,7 +190,8 @@ public class ExOOGridWorld implements DomainGenerator{
 				new UniversalActionType(ACTION_NORTH),
 				new UniversalActionType(ACTION_SOUTH),
 				new UniversalActionType(ACTION_EAST),
-				new UniversalActionType(ACTION_WEST));
+				new UniversalActionType(ACTION_WEST),
+				new UniversalActionType(ACTION_WAIT));
 
 
 		OODomain.Helper.addPfsToDomain(domain, this.generatePfs());

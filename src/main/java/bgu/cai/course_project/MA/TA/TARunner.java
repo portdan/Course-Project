@@ -86,36 +86,73 @@ public class TARunner {
 
 		VisualExplorer exp = new VisualExplorer(domain, env, v);
 
-		exp.addKeyAction("w", ACTION_NORTH_NORTH, "");
-		exp.addKeyAction("s", ACTION_SOUTH_SOUTH, "");
-		exp.addKeyAction("d", ACTION_EAST_EAST, "");
-		exp.addKeyAction("a", ACTION_WEST_WEST, "");
+		exp.addKeyAction("w", ACTION_NORTH_WAIT, "");
+		exp.addKeyAction("s", ACTION_SOUTH_WAIT, "");
+		exp.addKeyAction("d", ACTION_EAST_WAIT, "");
+		exp.addKeyAction("a", ACTION_WEST_WAIT, "");
+		exp.addKeyAction("i", ACTION_WAIT_NORTH, "");
+		exp.addKeyAction("k", ACTION_WAIT_SOUTH, "");
+		exp.addKeyAction("l", ACTION_WAIT_EAST, "");
+		exp.addKeyAction("j", ACTION_WAIT_WEST, "");
+		exp.addKeyAction(" ", ACTION_WAIT_WAIT, "");
 
 		exp.initGUI();
 	}	
 
 
-	public void BFSExample(String outputPath){
+	/**
+	 * running BFS algorithm
+	 * @return policy (plan) after running BFS
+	 */
+	public Policy GetBFSPolicy(){
 
 		gwdg.setDeterministicTransitionFactoredModel();
 
 		DeterministicPlanner planner = new BFS(domain, goalCondition, hashingFactory);
-		Policy p = planner.planFromState(initialState);
-		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "bfs");
 
+		DPrint.toggleUniversal(false);
+
+		long startTime = System.nanoTime(); 
+
+		Policy p = planner.planFromState(initialState);
+
+		long estimatedTime = System.nanoTime() - startTime;
+
+		System.out.println("Done Time : " + estimatedTime);
+
+		return p;
 	}
 
-	public void DFSExample(String outputPath){
+	/**
+	 * running DFS algorithm
+	 * @return policy (plan) after running DFS
+	 */
+	public Policy GetDFSPolicy(){
 
 		gwdg.setDeterministicTransitionFactoredModel();
 
 		DeterministicPlanner planner = new DFS(domain, goalCondition, hashingFactory);
-		Policy p = planner.planFromState(initialState);
-		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "dfs");
 
+		DPrint.toggleUniversal(false);
+
+		long startTime = System.nanoTime(); 
+
+		Policy p = planner.planFromState(initialState);
+
+		long estimatedTime = System.nanoTime() - startTime;
+
+		System.out.println("Done Time : " + estimatedTime);
+
+		return p;
 	}
 
-	public void AStarExample(String outputPath){
+	/**
+	 * running A* algorithm
+	 * @param mapHeight for heuristic
+	 * @param mapWidth for heuristic
+	 * @return policy (plan) after running A*
+	 */
+	public Policy GetAStar(final int mapHeight, final int mapWidth){
 
 		gwdg.setDeterministicTransitionFactoredModel();
 
@@ -123,7 +160,7 @@ public class TARunner {
 
 			public double h(State s) {
 				ExGridAgent a = ((ExGridWorldState)s).agent;
-				double mdist = Math.abs(a.x1-10) + Math.abs(a.y1-10);
+				double mdist = Math.abs(a.x1-mapWidth) + Math.abs(a.y1-mapHeight);
 
 				return -mdist;
 			}
@@ -132,115 +169,121 @@ public class TARunner {
 		DeterministicPlanner planner = new AStar(domain, goalCondition, hashingFactory,
 				mdistHeuristic);
 
+		long startTime = System.nanoTime(); 
+
 		Policy p = planner.planFromState(initialState);
-		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "astar");
+
+		long estimatedTime = System.nanoTime() - startTime;
+
+		System.out.println("Done Time : " + estimatedTime);
+
+		return p;
 	}	
 
-	public void ValueIterationExample(String outputPath){
+	/**
+	 * running Value Iteration algorithm
+	 * @param MaxDelta
+	 * @param MaxIterations
+	 * @return policy s after running Value Iteration
+	 */
+	public Policy GetValueIterationPolicy(double MaxDelta, int MaxIterations){
 
 		gwdg.setProbSucceedTransitionFactoredModel(0.8);
 
-		Planner planner = new ValueIteration(domain, 0.99, hashingFactory, 0.001, 100);
-		//Planner planner = new ValueIteration(domain, 0.99, hashingFactory, 0.000000001, 100);
+		Planner planner = new ValueIteration(domain, 0.99, hashingFactory, MaxDelta, MaxIterations);
+
+		DPrint.toggleUniversal(false);
+
+		long startTime = System.nanoTime(); 
+		System.out.println("Start Time : " + startTime);
 
 		Policy p = planner.planFromState(initialState);
 
-		Episode fin = PolicyUtils.rollout(p, initialState, domain.getModel());
+		long estimatedTime = System.nanoTime() - startTime;
 
-		System.out.println("Num Time Steps: " + fin.numTimeSteps());
+		System.out.println("Done Time : " + estimatedTime);
 
-		fin.write(outputPath + "vi");
+		return p;
 	}
 
-	public void QLearningExample(String outputPath){
+	/**
+	 * running QLearning algorithm
+	 * @param NumOfEpisodes
+	 * @return policy  after running QLearning
+	 */
+	public Policy GetQLearningPolicy(int NumOfEpisodes){
 
 		gwdg.setProbSucceedTransitionFactoredModel(0.8);
 
-		QLearning agent = new QLearning(domain, 0.99, hashingFactory, 0., 1.);
+		QLearning lerner = new QLearning(domain, 0.99, hashingFactory, 0., 1.);
 
-		agent.setLearningPolicy(new EpsilonGreedy(agent,0.1));
-		agent.setLearningRateFunction(new ConstantLR(0.5));
+		lerner.setLearningPolicy(new EpsilonGreedy(lerner,0.1));
+		lerner.setLearningRateFunction(new ConstantLR(0.5));
 
-		int minInd = 0;
-		int min = Integer.MAX_VALUE;
-		Episode minE = null;
+		DPrint.toggleUniversal(false);
 
-		//run learning for 1000-100000 episodes
-		for(int i = 0; i < 1000; i++){
+		long startTime = System.nanoTime(); 
+		System.out.println("Start Time : " + startTime);
 
-			Episode e = agent.runLearningEpisode(env);
+		//run learning for NumOfEpisodes
+		for(int i = 0; i < NumOfEpisodes; i++){
 
-			//e.write(outputPath + "ql_" + i);
-			//System.out.println(i + ": " + e.maxTimeStep());
-
-			if( min > e.maxTimeStep()) {
-				min = e.maxTimeStep();	
-				minE = e.copy();
-				minInd = i;
-			}
-
-			//System.out.println(i);
+			lerner.runLearningEpisode(env);
 
 			//reset environment for next learning episode
 			env.resetEnvironment();
 		}
 
-		//minE.write(outputPath + "ql_min"+minInd);
+		Policy p = lerner.planFromState(initialState);
 
-		Policy p = agent.planFromState(initialState);
+		long estimatedTime = System.nanoTime() - startTime;
 
-		Episode fin = PolicyUtils.rollout(p, initialState, domain.getModel());
+		System.out.println("Done Time : " + estimatedTime);
 
-		System.out.println("Num Time Steps: " + fin.numTimeSteps());
-
-		fin.write(outputPath + "Final");
-
+		return p;
 	}	
 
-	public void SarsaLearningExample(String outputPath) {
+	/**
+	 * running Sarsa algorithm
+	 * @param NumOfEpisodes
+	 * @return policy (plan) after running Sarsa
+	 */
+	public Policy GetSarsaLearningPolicy(int NumOfEpisodes) {
 
 		gwdg.setProbSucceedTransitionFactoredModel(0.8);
 
-		SarsaLam agent = new SarsaLam(domain, 0.99, hashingFactory, 0., 0.5, 0.3);
+		SarsaLam lerner = new SarsaLam(domain, 0.99, hashingFactory, 0., 0.5, 0.3);
 
-		agent.setLearningPolicy(new EpsilonGreedy(agent,0.1));
-		agent.setLearningRateFunction(new ConstantLR(0.5));
+		lerner.setLearningPolicy(new EpsilonGreedy(lerner,0.1));
+		lerner.setLearningRateFunction(new ConstantLR(0.5));
 
-		int minInd = 0;
-		int min = Integer.MAX_VALUE;
-		Episode minE = null;
+		DPrint.toggleUniversal(false);
 
-		//run learning for 1000 episodes
-		for(int i = 0; i < 1000; i++){
+		long startTime = System.nanoTime(); 
+		System.out.println("Start Time : " + startTime);
 
-			Episode e = agent.runLearningEpisode(env);
+		//run learning for NumOfEpisodes
+		for(int i = 0; i < NumOfEpisodes; i++){
 
-			//e.write(outputPath + "sarsa_" + i);
-			//System.out.println(i + ": " + e.maxTimeStep());
-
-			if( min > e.maxTimeStep()) {
-				min = e.maxTimeStep();	
-				minE = e.copy();
-				minInd = i;
-			}
-
-			System.out.println(i);	
+			lerner.runLearningEpisode(env);
 
 			//reset environment for next learning episode
 			env.resetEnvironment();
 		}
 
-		//minE.write(outputPath + "sarsa_min"+minInd);
+		Policy p = lerner.planFromState(initialState);
 
-		Policy p = agent.planFromState(initialState);
+		long estimatedTime = System.nanoTime() - startTime;
 
-		Episode fin = PolicyUtils.rollout(p, initialState, domain.getModel());
+		System.out.println("Done Time : " + estimatedTime);
 
-		System.out.println("Num Time Steps: " + fin.numTimeSteps());
-
-		fin.write(outputPath + "Final");
+		return p;
 	}
-	
+
+	/**
+	 * running UCT algorithm
+	 * @return policy after running UCT
+	 */
 	public Policy GetUCTPolicy() {
 
 		gwdg.setProbSucceedTransitionFactoredModel(0.8);
@@ -248,8 +291,9 @@ public class TARunner {
 		DPrint.toggleUniversal(false);
 
 		long startTime = System.nanoTime(); 
+		System.out.println("Start Time : " + startTime);
 
-		Planner planner = new UCT(domain, 0.99, hashingFactory, 1000, 50000, 3);
+		Planner planner = new UCT(domain, 0.99, hashingFactory, 50, 10000, 20);
 		Policy p = planner.planFromState(initialState);
 
 		long estimatedTime = System.nanoTime() - startTime;
@@ -259,15 +303,23 @@ public class TARunner {
 		return p;
 	}
 
-	public Policy GetRTDPTPolicy() {
+	/**
+	 * running RTDP algorithm
+	 * @param numRollouts
+	 * @param maxDelta
+	 * @param maxDepth
+	 * @return policy after running RTDP
+	 */
+	public Policy GetRTDPPolicy(int numRollouts, double maxDelta, int maxDepth) {
 
 		gwdg.setProbSucceedTransitionFactoredModel(0.8);
 
 		DPrint.toggleUniversal(false);
 
 		long startTime = System.nanoTime(); 
+		System.out.println("Start Time : " + startTime);
 
-		Planner planner = new RTDP(domain, 0.99, hashingFactory, 0., 1000, 0.001, 1000);
+		Planner planner = new RTDP(domain, 0.99, hashingFactory, -100., numRollouts, maxDelta, maxDepth);
 		Policy p = planner.planFromState(initialState);
 
 		long estimatedTime = System.nanoTime() - startTime;
@@ -277,11 +329,17 @@ public class TARunner {
 		return p;
 	}
 
+	/**
+	 * rollouts the given policy #numOfIterations times and save the best one in the given path
+	 * @param p
+	 * @param numOfIterations
+	 * @param outputPath
+	 * @param Ename
+	 */
 	public void RunPolicy(Policy p , int numOfIterations, String outputPath, String Ename) {
 
 		int sumNumOfSteps = 0;
 
-		int minInd = 0;
 		int min = Integer.MAX_VALUE;
 		Episode minE = null;
 
@@ -297,14 +355,15 @@ public class TARunner {
 			if( min > e.numTimeSteps()) {
 				min = e.numTimeSteps();	
 				minE = e.copy();
-				minInd = i;
 			}
-			
+
 			System.out.println("End rollout - " + (i+1));
+
+			System.out.println("Avg Num Time Steps (iter "+ (i+1) +"): " + sumNumOfSteps/(i+1));
 		}
 
 		System.out.println("Avg Num Time Steps: " + sumNumOfSteps/numOfIterations);
 
-		minE.write(outputPath + Ename);
+		minE.write(outputPath + Ename + "_"+min );
 	}
 }

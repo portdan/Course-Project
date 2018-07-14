@@ -90,6 +90,7 @@ public class SARunner {
 		exp.addKeyAction("s", ACTION_SOUTH, "");
 		exp.addKeyAction("d", ACTION_EAST, "");
 		exp.addKeyAction("a", ACTION_WEST, "");
+		exp.addKeyAction(" ", ACTION_WAIT, "");
 
 		exp.initGUI();
 	}	
@@ -250,7 +251,7 @@ public class SARunner {
 
 		long startTime = System.nanoTime(); 
 
-		Planner planner = new UCT(domain, 0.99, hashingFactory, 1000, 50000, 3);
+		Planner planner = new UCT(domain, 0.99, hashingFactory, 50, 10000, 20);
 		Policy p = planner.planFromState(initialState);
 
 		long estimatedTime = System.nanoTime() - startTime;
@@ -268,7 +269,7 @@ public class SARunner {
 
 		long startTime = System.nanoTime(); 
 
-		Planner planner = new RTDP(domain, 0.99, hashingFactory, 0., 1000, 0.001, 1000);
+		Planner planner = new RTDP(domain, 0.99, hashingFactory, -100., 100000, 0.000000001, 5000);
 		Policy p = planner.planFromState(initialState);
 
 		long estimatedTime = System.nanoTime() - startTime;
@@ -300,12 +301,12 @@ public class SARunner {
 				minE = e.copy();
 				minInd = i;
 			}
-			
+
 			System.out.println("End rollout - " + (i+1));
 		}
 
 		System.out.println("Avg Num Time Steps: " + sumNumOfSteps/numOfIterations);
 
-		minE.write(outputPath + Ename);
+		minE.write(outputPath + Ename + "_"+min );
 	}
 }

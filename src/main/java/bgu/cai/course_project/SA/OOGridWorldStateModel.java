@@ -25,34 +25,50 @@ class OOGridWorldStateModel implements FullStateModel {
 
 	public List<StateTransitionProb> stateTransitions(State s, Action a) {
 
-		double [] directionProbs = transitionDynamics[actionDirection(a.actionName())];
-
 		List <StateTransitionProb> transitions = new ArrayList<StateTransitionProb>();
 
-		for(int i = 0; i < directionProbs.length; i++){
+		int actionDirection = actionDirection(a.actionName());
 
-			double p = directionProbs[i];
-
-			if(p == 0.)
-				continue; //cannot transition in this direction
+		if(actionDirection == -1)
+		{
+			double p = 1.0;
 
 			State ns = s.copy();
-			int [] dcomps = actionDirectionDeltaFromIndex(i);
+
+			int [] dcomps = actionDirectionDeltaFromIndex(-1);
 			ns = actionMoveResult(ns, dcomps);
 
-			//make sure this direction doesn't actually stay in the same place and replicate another no-op
-			boolean isNew = true;
-			for(StateTransitionProb tp : transitions){
-				if(tp.s.equals(ns)){
-					isNew = false;
-					tp.p += p;
-					break;
-				}
-			}
+			StateTransitionProb tp = new StateTransitionProb(ns, p);
+			transitions.add(tp);
+		}
+		else {
+			double [] directionProbs = transitionDynamics[actionDirection];
 
-			if(isNew){
-				StateTransitionProb tp = new StateTransitionProb(ns, p);
-				transitions.add(tp);
+			for(int i = 0; i < directionProbs.length; i++){
+
+				double p = directionProbs[i];
+
+				if(p == 0.)
+					continue; //cannot transition in this direction
+
+				State ns = s.copy();
+				int [] dcomps = actionDirectionDeltaFromIndex(i);
+				ns = actionMoveResult(ns, dcomps);
+
+				//make sure this direction doesn't actually stay in the same place and replicate another no-op
+				boolean isNew = true;
+				for(StateTransitionProb tp : transitions){
+					if(tp.s.equals(ns)){
+						isNew = false;
+						tp.p += p;
+						break;
+					}
+				}
+
+				if(isNew){
+					StateTransitionProb tp = new StateTransitionProb(ns, p);
+					transitions.add(tp);
+				}
 			}
 		}
 
@@ -63,17 +79,23 @@ class OOGridWorldStateModel implements FullStateModel {
 
 		s = s.copy();
 
-		double [] directionProbs = transitionDynamics[actionDirection(a.actionName())];
+		int dir = -1;
 
-		double roll = rand.nextDouble();
-		double curSum = 0.;
-		int dir = 0;
+		int actionDirection = actionDirection(a.actionName());
 
-		for(int i = 0; i < directionProbs.length; i++){
-			curSum += directionProbs[i];
-			if(roll < curSum){
-				dir = i;
-				break;
+		if(actionDirection != -1)
+		{
+			double roll = rand.nextDouble();
+			double curSum = 0.;
+
+			double [] directionProbs = transitionDynamics[actionDirection];
+
+			for(int i = 0; i < directionProbs.length; i++){
+				curSum += directionProbs[i];
+				if(roll < curSum){
+					dir = i;
+					break;
+				}
 			}
 		}
 
@@ -96,6 +118,9 @@ class OOGridWorldStateModel implements FullStateModel {
 		else if(actionName.equals(ACTION_WEST)){
 			return 3;
 		}
+		else if(actionName.equals(ACTION_WAIT)){
+			return -1;
+		}
 
 		throw new RuntimeException("Unknown action " + actionName);
 	}
@@ -105,6 +130,12 @@ class OOGridWorldStateModel implements FullStateModel {
 		int [] result = null;
 
 		switch (i) {
+
+		// wait
+		case -1: 
+			result = new int[]{0,0};
+			break;
+
 		case 0:
 			result = new int[]{0,1};
 			break;

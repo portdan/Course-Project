@@ -1,6 +1,7 @@
 package bgu.cai.course_project.SA;
 
 import bgu.cai.course_project.SA.SARunner;
+import burlap.behavior.policy.Policy;
 
 /**
  * @author James MacGlashan.
@@ -10,7 +11,7 @@ public class ExOOGridWorldMain {
 
 	public static void main(String [] args){
 
-		int MapNum = 1;
+		int MapNum = 2;
 
 		SARunner example = new SARunner(MapNum);
 
@@ -42,11 +43,12 @@ public class ExOOGridWorldMain {
 		//example.SarsaLearningExample(StochasticOutputPathSarsa);
 		//example.visualizeActionObserver(StochasticOutputPathSarsa);
 
-		example.RunPolicy(example.GetUCTPolicy(), 1, StochasticOutputPathUCT,"uct");
+		//example.RunPolicy(example.GetUCTPolicy(), 1, StochasticOutputPathUCT,"uct");
 		//example.visualizeActionObserver(StochasticOutputPathUCT);
 
-		//example.RunPolicy(example.GetRTDPTPolicy(), 100, StochasticOutputPathRTDP,"rtdp");
-		//example.visualizeActionObserver(StochasticOutputPathRTDP);
+		Policy p = example.GetRTDPTPolicy();	
+		example.RunPolicy(p, 100, StochasticOutputPathRTDP,"rtdp");
+		example.visualizeActionObserver(StochasticOutputPathRTDP);
 
 		//example.visualizeExplorer(true);
 

@@ -1,5 +1,7 @@
 package bgu.cai.course_project.MA.TA;
 
+import burlap.behavior.policy.Policy;
+
 /**
  * @author James MacGlashan.
  */
@@ -8,7 +10,7 @@ public class ExOOGridWorldMain {
 
 	public static void main(String [] args){
 
-		int MapNum = 1;
+		int MapNum = 2;
 
 		TARunner example = new TARunner(MapNum);
 
@@ -31,22 +33,25 @@ public class ExOOGridWorldMain {
 		//example.AStarExample(DeterministicOutputPath);
 		//example.visualizeActionObserver(DeterministicOutputPath);
 
-		//example.ValueIterationExample(StochasticOutputPathVI);
+		//Policy p = example.GetValueIterationPolicy(0.000000001, 20);
+		//example.RunPolicy(p, 10, StochasticOutputPathVI,"vi");
 		//example.visualizeActionObserver(StochasticOutputPathVI);
 
-		//example.QLearningExample(StochasticOutputPathQ);
+		//Policy p = example.GetQLearningPolicy(200000);
+		//example.RunPolicy(p, 10, StochasticOutputPathQ,"ql");
 		//example.visualizeActionObserver(StochasticOutputPathQ);
 
 		//example.SarsaLearningExample(StochasticOutputPathSarsa);
 		//example.visualizeActionObserver(StochasticOutputPathSarsa);
 
-		example.RunPolicy(example.GetUCTPolicy(), 1, StochasticOutputPathUCT,"uct");
+		//example.RunPolicy(example.GetUCTPolicy(), 1, StochasticOutputPathUCT,"uct");
 		//example.visualizeActionObserver(StochasticOutputPathUCT);
 
-		//example.RunPolicy(example.GetRTDPTPolicy(), 100, StochasticOutputPathRTDP,"rtdp");
+		//Policy p = example.GetRTDPPolicy(10000000, 0.000000001, 1000);
+		//example.RunPolicy(p, 10, StochasticOutputPathRTDP,"rtdp");
 		//example.visualizeActionObserver(StochasticOutputPathRTDP);
 
-		//example.visualizeExplorer(true);
+		//example.visualizeExplorer(false);
 
 	}
 }
